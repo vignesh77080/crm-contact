@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/crm-contact/static/css/main.0d652538.chunk.css",
+    "main.js": "/crm-contact/static/js/main.f944efee.chunk.js",
+    "main.js.map": "/crm-contact/static/js/main.f944efee.chunk.js.map",
+    "runtime-main.js": "/crm-contact/static/js/runtime-main.f456f2d7.js",
+    "runtime-main.js.map": "/crm-contact/static/js/runtime-main.f456f2d7.js.map",
+    "static/js/2.893a0d46.chunk.js": "/crm-contact/static/js/2.893a0d46.chunk.js",
+    "static/js/2.893a0d46.chunk.js.map": "/crm-contact/static/js/2.893a0d46.chunk.js.map",
+    "index.html": "/crm-contact/index.html",
+    "precache-manifest.4e5c6e9fbf66d6d179c1d860eaf02f4d.js": "/crm-contact/precache-manifest.4e5c6e9fbf66d6d179c1d860eaf02f4d.js",
+    "service-worker.js": "/crm-contact/service-worker.js",
+    "static/css/main.0d652538.chunk.css.map": "/crm-contact/static/css/main.0d652538.chunk.css.map",
+    "static/js/2.893a0d46.chunk.js.LICENSE.txt": "/crm-contact/static/js/2.893a0d46.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f456f2d7.js",
+    "static/js/2.893a0d46.chunk.js",
+    "static/css/main.0d652538.chunk.css",
+    "static/js/main.f944efee.chunk.js"
+  ]
+}
