@@ -1,0 +1,42 @@
+.addForm{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 30px;
+    width: 60%;
+    box-shadow: 0px 1px 6px #fff;
+}
+
+.addFormWrap button{
+    margin-right : 15px;
+}
+
+.addForm form + button{
+    margin: 15px 0 5px;
+    position: absolute;
+    left: calc(var(--button) + 50px);
+    bottom: 5%;
+}
+
+@media (max-width:768px){
+    .addForm form + button{
+        bottom: 24px;
+    }
+    .addForm{
+        top: 60%;
+        width: 90%;
+        z-index: 3;
+    }
+}
+
+@media (max-width:500px){
+    .addForm form + button{
+        position: static;
+    }
+
+    .addFormWrap button{
+        margin: 20px 0 0 0;
+    }
+}

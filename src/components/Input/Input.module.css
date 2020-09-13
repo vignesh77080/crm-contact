@@ -1,0 +1,71 @@
+.inputWrap{
+    display: block;
+    position: relative;
+    margin: 0 0 4%;
+}
+
+.inputWrap input[type='text']{
+    padding: 12px 10px 0;
+    width: 100%;
+    height: 50px;
+    display: block;
+    margin: 0 0 5px;
+    outline: none;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #000000;
+    font-size: 16px;
+    color: #000000;
+    cursor: pointer;
+    position: relative;
+    z-index: 12;
+}
+
+.inputWrap label{
+    position: absolute;
+    width: 100%;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 2px;
+    z-index: -1;
+    top: 20px;
+    transition: transform .3s;
+    color: #9a9a9a;
+}
+
+.inputWrap input[type='text']:focus ~ label, .inputWrap .styleClass ~ label{
+    /* transform: translateX(-25%) translateY(-40%) scale(.5); */
+    transform:translateX(-25%) translateY(-85%) scale(.5);
+}
+
+.inputWrap input[type='text'].hasError{
+    border-bottom: 1px solid red;
+    animation: error 1s linear 1 forwards;
+}
+
+@keyframes error{
+    0%, 100% {
+        transform: translateX(0);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(-10px);
+    }
+    10%, 30%, 50%, 70% {
+        transform: translateX(10px);
+    }
+}
+
+@media (max-width:768px){
+    .inputWrap input[type='text']{
+        font-size: 16px;
+    }
+    .inputWrap label{
+        font-size: 18px;
+        letter-spacing: 3px;
+        top: 25px;
+    }
+    .inputWrap input[type='text']:focus ~ label, .inputWrap .styleClass ~ label{
+        transform: translateX(-25%) translateY(-100%) scale(.5);
+    }
+}

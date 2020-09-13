@@ -1,0 +1,63 @@
+.viewContactitems{
+    width: 100%;
+}
+
+.basicInfo{
+    width: 100%;
+    text-align: center;
+    padding: 22px 15px;
+}
+
+.name{
+    font-size: 24px;
+    text-transform: capitalize;
+    align-self: center;
+    font-weight: 500;
+}
+
+.twoLetters{    
+    border-radius: 50%;
+    font-size: 24px;
+    text-transform: uppercase;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    padding: 20px 0;
+    line-height: 32px;
+    color: #000;
+    display: inline-block;
+    margin-bottom: 12px;
+    font-weight: 500;
+    background: #e58b16;
+}
+
+.personInfo{
+    width: 100%;
+    padding:20px;
+}
+
+.personInfo div{
+    padding: 18px 0px;
+    border-bottom: 1px solid rgb(0, 0, 0, 9%);
+    width: 90%;
+    margin: auto;
+    display: flex;
+}
+
+.personInfo div:first-child{
+    text-transform: capitalize;
+}
+
+.personInfo div:last-child{
+    border-bottom: 0px;
+}
+
+.personInfo div span:first-child {
+    font-weight: 400;
+    flex: 1;
+}
+
+.personInfo div span:last-child {
+    font-weight: 500;
+    flex: 2;
+}

@@ -1,0 +1,23 @@
+button {
+    width: 100%;
+    max-width: var(--button);
+    height: 40px;
+    font-size: 15px;
+    background: linear-gradient(to right, rgb(252 50 32), rgb(255 60 60));
+    outline: none;
+    border: 0px;
+    border-radius: 6px;
+    box-shadow: 1px 3px 10px rgb(0 0 0 / 0.5);
+    cursor: pointer;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+
+button:hover{
+    box-shadow: 0px 1px 4px rgb(0 0 0 / 0.5);
+}
+
+button:disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
+}

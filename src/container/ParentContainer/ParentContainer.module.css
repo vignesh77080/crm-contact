@@ -1,0 +1,95 @@
+.rootContainer{
+    width: 100%;
+    padding: 3%;
+}
+
+.addcontact{
+    width: 100%;
+}
+
+.viewcontactList{
+    width: 50%;
+}
+
+.viewcontactList li{
+    display: flex;
+    padding: 15px 20px;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+
+.viewcontactList li:first-child{
+    background: #ececec;
+}
+
+.viewcontactList li div:first-child{
+    flex: 0.5;
+}
+
+.viewcontactList li div:nth-child(2){
+    flex: 1.5;
+}
+
+.viewcontactList li div:nth-child(3){
+    flex: 0.75;
+}
+
+.contactWrap{
+    display: flex;
+    margin: 20px 0;
+    min-height: 450px;
+}
+
+.previewcontact{
+    flex: 1 1;
+    background: #ececec;
+    margin: 0 4%;
+    position: relative;
+    z-index: -1;
+}
+
+.selectText{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.active{
+    background: #ececec;
+}
+
+.listUl{
+    height: 475px;
+    overflow: auto;
+}
+
+@media (max-width:767px){
+    .listUl{
+        height: 370px;
+        overflow: auto;
+    }
+}
+
+@media (max-width:500px){
+    .viewcontactList li div:nth-child(3){
+        display: none;
+    }
+}
+
+@media (max-width:1024px){
+    .contactWrap{
+        flex-direction: column;
+    }
+    .viewcontactList{
+        width: 100%;
+    }
+    .previewcontact{
+        margin: 4% 0 4%;
+        min-height: 300px;
+    }
+}
+

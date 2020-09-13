@@ -1,0 +1,31 @@
+.App {
+    word-break: break-word;
+}
+
+.heading{
+    display: flex;
+    padding: 3% 3% 0;
+}
+
+@media (max-width:767px){
+    .heading{
+        padding: 30px 3%;
+    }
+}
+
+.heading > span{
+    font-size: 35px;
+    align-self: center;
+}
+
+.heading p{
+    font-size: 28px;
+    padding: 0px 0 0 10px;
+    font-weight: 500;
+}
+
+.heading p span {
+    font-size: 12px;
+    display: block;
+    color: rgba(0, 0, 0, 0.5);
+}

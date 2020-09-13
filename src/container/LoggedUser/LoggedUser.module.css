@@ -1,0 +1,48 @@
+.loggedUser {
+    min-height: 50px;
+    box-shadow: 0px 1px 6px rgb(0, 0, 0, 0.12);
+    width: 100%;
+    position: relative;
+}
+
+.loggedUser p:first-child{
+    float: right;
+    padding: 15px;
+    margin-right: 50px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.loggedUser p span:first-child{
+    margin-right: 10px;
+}
+
+.loggedUser ul{
+    position: absolute;
+    right: 20px;
+    top: 50px;
+    list-style: none;
+    background:  rgb(255, 255, 255, 0.4);
+    box-shadow: 0px 1px 6px rgb(0, 0, 0, 0.12);
+    height: 260px;
+    overflow: auto;
+    max-width: 260px;
+    width: 100%;
+}
+
+.loggedUser li{
+    padding: 8px;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.12);
+    cursor: pointer;
+}
+
+
+@media (max-width:1024px){
+    .loggedUser p:first-child{
+        margin-right: 15px;
+    }
+    .loggedUser ul{
+        background: #ececec;
+        right: 0px;
+    }
+}

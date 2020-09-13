@@ -1,0 +1,83 @@
+.messagingWrap {
+    position: fixed;
+    bottom: 0;
+    right: 0px;
+    width: 35%;
+    background: #fff;
+    display: flex;
+    align-items: flex-end;
+    box-shadow: 0px 1px 6px #fff;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.message{
+    width: 100%;
+}
+
+.messageBox {
+    width: 100%;
+    position: relative;
+}
+
+.messageBox > div{
+    margin: 0;
+    z-index: 0;
+}
+
+.messageBox svg{
+    position: absolute;
+    top: 46%;
+    transform: translateY(-50%);
+    right: 25px;
+    font-size: 20px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.messagingWrap input[type='text']{
+    margin: 0 auto 2px;
+    border: 1px solid;
+    border-radius: 50px;
+    height: 40px;
+    padding: 10px 50px 10px 15px;
+    width: 98%;
+}
+
+.disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+@media (max-width:1025px){
+    .messagingWrap{
+        width: 50%;
+    }
+    .message{
+        height: 100%;
+    }
+    .messagingWrap input[type="text"]{
+        padding: 10px 50px 10px 15px;
+        font-size: 18px;
+        height: 60px;
+    }
+}
+
+@media (max-width:768px){
+
+    .messagingWrap{
+        height: 70%;
+        width: 85%;
+    }
+    .messagingWrap input[type="text"]{
+        padding: 10px 50px 10px 15px;
+        font-size: 16px;
+        height: 40px;
+    }
+
+    .messagingWrap input[type="text"]::placeholder{
+        font-size: 12px;
+    }
+
+}

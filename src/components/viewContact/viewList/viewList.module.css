@@ -1,0 +1,68 @@
+.svg{
+    flex: 0.5;
+    font-size: 18px;
+    align-self: center;
+}
+
+.svg svg:nth-child(2){
+    transform: translateX(15px);
+}
+
+.basicInfo{
+    display: flex;
+    flex: 1.5;
+}
+
+.messagesCount{
+    display: inline-block;
+    transform: translateX(5px) translateY(-12px);
+    border: 1px solid;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+    text-align: center;
+    background: #000;
+    color: #fff;
+}
+
+.company{
+    flex: 0.75;
+    align-self: center;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.name{
+    font-size: 20px;
+    text-transform: capitalize;
+    align-self: center;
+    padding: 0 0 0 10px;
+    font-weight: 500;
+}
+
+.name span{
+    text-transform: lowercase;
+    font-size: 12px;
+    display: block;
+    font-weight: 400;
+}
+
+.twoLetters{    
+    border-radius: 50%;
+    font-size: 20px;
+    text-transform: uppercase;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding: 10px 0;
+    line-height: 32px;
+    color: #fff;
+    background: #e58b16;
+    display: inline-block;
+}
+
+.disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}

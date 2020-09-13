@@ -1,0 +1,32 @@
+.messageChat{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    overflow: auto;
+    padding: 10px 15px;
+}
+
+.messageChat li{
+    width: 50%;
+    font-size: 18px;
+    align-self: flex-end;
+    text-align: right;
+    padding: 10px;
+    margin: 0 0 10px;
+    border-radius: 6px;
+    background: #ececec;
+}
+
+.messageChat .nonLi{
+    margin: auto;
+    background: none;
+    text-align: center;
+    width: 100%;
+}
+
+/* @media (max-width:1025px){
+    .messageChat{
+        height: 100%;
+    }
+} */
