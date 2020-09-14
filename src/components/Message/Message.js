@@ -12,7 +12,8 @@ let Message = (props) =>{
     if(findLogged.length > 0){
         findLogged.map(items =>(
             messageArr = items.messages.filter(items => (
-                items.To === props.toPerson || items.From === props.toPerson
+                (items.To === props.toPerson.FullName) 
+                || (items.From === props.toPerson.FullName)
             ))
         ))
     }
@@ -26,7 +27,7 @@ let Message = (props) =>{
         <ul className={classes.messageChat}>
             {messageArr.length > 0 ? messageArr.map((items, index)=>{
                 return <li 
-                    style={items.From === props.toPerson ? styleUnlogged : null }
+                    style={items.From === props.toPerson.FullName ? styleUnlogged : null }
                     key={index}>{items.message}</li>
             }) : <li className={classes.nonLi}> No messages to display </li>}
         </ul>

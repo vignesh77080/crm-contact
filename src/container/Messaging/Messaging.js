@@ -87,7 +87,7 @@ class Messaging extends React.Component{
                         <div className={classes.message}>
                             <Message 
                                 contactArr={this.props.contactArr}
-                                toPerson={this.props.toPerson.FullName} /> 
+                                toPerson={this.props.toPerson} /> 
                         </div>
                         <div className={classes.messageBox}>
                             <Input  

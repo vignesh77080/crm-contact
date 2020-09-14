@@ -20,6 +20,16 @@
     bottom: 5%;
 }
 
+.errmsg{
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0 10px;
+    color: red;
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+}
+
 @media (max-width:768px){
     .addForm form + button{
         bottom: 24px;
@@ -38,5 +48,9 @@
 
     .addFormWrap button{
         margin: 20px 0 0 0;
+    }
+
+    .errmsg{
+        position: static;
     }
 }

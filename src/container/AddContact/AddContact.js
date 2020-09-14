@@ -1,9 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Backdrop from '../../components/Backdrop/Backdrop';
 import classes from './AddContact.module.css';
+import * as actionTypes from '../hoc/store/Action/action';
+import {randomColor} from '../../components/viewContact/ultilities/ultilityFunctions';
 
 class AddContact extends React.Component {
 
@@ -93,7 +96,8 @@ class AddContact extends React.Component {
                 IsValid : true
             }
         },
-        formValid : false
+        formValid : false,
+        errMsg : false
     }
 
     checkValidity(value, validation){
@@ -131,28 +135,25 @@ class AddContact extends React.Component {
         }
         this.setState({
             contactForm : newContact,
-            formValid : formValid
+            formValid : formValid,
+            errMsg : false
         })
     }
 
-    onHandleChangeEdit = (event, items) =>{
-        let newContact = { ...this.state.contactForm };
-        let updatingContact = { ...newContact[items] };
-        updatingContact.value = event.target.value;
-        updatingContact.touched = false
-        if(updatingContact.value.length > 0){
-            updatingContact.touched = true
+    onSubmitAddForm = (e, items) => {
+        e.preventDefault();
+        let repeated = this.props.contactArr.filter(item=>item.FullName === items.FullName.value);
+        if(repeated.length > 0){
+            this.setState({
+                formValid : !this.state.formValid,
+                errMsg : true
+            })
         }
-        updatingContact.IsValid = this.checkValidity(updatingContact.value, updatingContact.validation);
-        newContact[items] = updatingContact;
-        let formValid = true;
-        for(let i in newContact){
-            formValid = newContact[i].IsValid && formValid
+        else{
+            this.props.onSubmitAddContact(items);
+            this.props.onRandomColors(randomColor())
+            this.props.close();
         }
-        this.setState({
-            contactForm : newContact,
-            formValid : formValid
-        })
     }
 
     onclearValues = () => {
@@ -170,19 +171,19 @@ class AddContact extends React.Component {
         
         let form = (
                 <div className={classes.addForm}>
-                    <form onSubmit={(e) =>this.props.submit(e, this.state.contactForm)}>
+                    <form onSubmit={(e) =>this.onSubmitAddForm(e, this.state.contactForm)}>
                         {Object.keys(this.state.contactForm).map((items)=>(
                             <Input 
                                 key = { items }
                                 styleClass = {this.state.contactForm[items].touched}
                                 label = {this.state.contactForm[items].label}
                                 invalid = { !this.state.contactForm[items].IsValid }
-                                //shouldValidate = {this.state.contactForm[items].validation}
                                 elementProps = {this.state.contactForm[items].elementProps}
                                 changed = { (e) => this.onHandleChange(e, items) }
                                 value = {this.state.contactForm[items].value} />
                         ))}
                         <Button disabled={!this.state.formValid}> Add Contact </Button>
+                        {this.state.errMsg ? <span className={classes.errmsg}>This FullName already exits</span> : null}
                     </form>
                     <Button clicked={this.onclearValues} disabled={false}> Close </Button>
                 </div>
@@ -198,4 +199,17 @@ class AddContact extends React.Component {
 
 };
 
-export default AddContact;
+let mapPropsToState = state => {
+    return{
+        contactArr : state.contactArr,
+    }
+}
+
+let mapDispatchToProps = dispatch => {
+    return{
+        onSubmitAddContact : (items) => (dispatch(actionTypes.onSubmitAddForm(items))),
+        onRandomColors : (items) => (dispatch(actionTypes.onGenerateColor(items)))
+    }
+}
+
+export default connect(mapPropsToState, mapDispatchToProps)(AddContact);

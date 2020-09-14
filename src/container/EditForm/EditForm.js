@@ -1,11 +1,13 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import Backdrop from '../../components/Backdrop/Backdrop';
 import classes from './EditForm.module.css';
+import * as actionTypes from '../hoc/store/Action/action';
 
-class AddContact extends React.Component {
+class EditContact extends React.Component {
 
     state = {
         contactForm : {
@@ -93,7 +95,8 @@ class AddContact extends React.Component {
                 IsValid : true
             }
         },
-        formValid : true
+        formValid : true,
+        errMsg : false
     }
 
     checkValidity(value, validation){
@@ -131,7 +134,8 @@ class AddContact extends React.Component {
         }
         this.setState({
             contactForm : newContact,
-            formValid : formValid
+            formValid : !formValid,
+            errMsg : false
         })
     }
 
@@ -146,23 +150,41 @@ class AddContact extends React.Component {
         })
     }
 
+    onSubmitEditForm = (e, items, id) =>{
+        e.preventDefault();
+        let repeated = this.props.contactArr.filter(item=>item.FullName === items.FullName.value);
+        if(repeated.length > 0){
+            this.setState({
+                formValid : !this.state.formValid,
+                errMsg : true
+            })
+        }else{
+            let data = {
+                items,
+                id
+            }
+            this.props.onSubmitEditContact(data);
+            this.props.close();
+        }
+    }
+
     render(){
         
         let form = (
                 <div className={classes.addForm}>
-                    <form onSubmit={(e) =>this.props.submitEdit(e, this.state.contactForm, this.props.item.id)}>
+                    <form onSubmit={(e) =>this.onSubmitEditForm(e, this.state.contactForm, this.props.item.id)}>
                         {Object.keys(this.state.contactForm).map((items)=>(
                             <Input 
                                 key = { items }
                                 styleClass = { this.state.contactForm[items].touched}
                                 label = {this.state.contactForm[items].label}
                                 invalid = { !this.state.contactForm[items].IsValid }
-                                // shouldValidate = {this.state.contactForm[items].validation}
                                 elementProps = {this.state.contactForm[items].elementProps}
                                 changed = { (e) => this.onHandleChangeEdit(e, items) }
                                 value = {this.state.contactForm[items].value} />
                         ))}
-                        <Button disabled={!this.state.formValid}> Edit Contact </Button>
+                        <Button disabled={this.state.formValid}> Edit Contact </Button>
+                        {this.state.errMsg ? <span className={classes.errmsg}>This FullName already exits</span> : null}
                     </form>
                     <Button clicked={this.onclearValues} disabled={false}> Close </Button>
                 </div>
@@ -178,4 +200,16 @@ class AddContact extends React.Component {
 
 };
 
-export default AddContact;
+let mapPropsToState = state => {
+    return{
+        contactArr : state.contactArr,
+    }
+}
+
+let mapDispatchToProps = dispatch => {
+    return{
+        onSubmitEditContact : (data) => (dispatch(actionTypes.onSubmitEditForm(data)))
+    }
+}
+
+export default connect(mapPropsToState, mapDispatchToProps)(EditContact);

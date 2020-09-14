@@ -7,9 +7,9 @@ import EditContact from '../EditForm/EditForm';
 import ViewList from '../../components/viewContact/viewList/viewList';
 import ViewContact from '../../components/viewContact/viewcontact/viewContact';
 import * as actionTypes from '../hoc/store/Action/action';
-import { findLogged } from '../../components/viewContact/ultilities/ultilityFunctions';
+import { findLogged, randomColor } from '../../components/viewContact/ultilities/ultilityFunctions';
 import { connect } from 'react-redux';
-import { randomColor } from '../../components/viewContact/ultilities/ultilityFunctions';
+
 
 class ParentContainer extends React.Component{
 
@@ -27,15 +27,6 @@ class ParentContainer extends React.Component{
     }
 
     onShowAddform = ()=>{
-        this.setState({
-            addForm : !this.state.addForm
-        })
-    }
-
-    onSubmitAddForm = (e, items) => {
-        e.preventDefault();
-        this.props.onSubmitAddContact(items);
-        this.props.onRandomColors(randomColor())
         this.setState({
             addForm : !this.state.addForm
         })
@@ -66,20 +57,15 @@ class ParentContainer extends React.Component{
         })
     }
 
-    onSubmitEditForm = (e, items, id) =>{
-        e.preventDefault();
-        let data = {
-            items,
-            id
-        }
-        this.props.onSubmitEditContact(data)
-        this.setState({
-            editForm : !this.state.editForm
-        })
+    messageCount(items){
+        let count = items.messages.filter(items => 
+            items.To === (this.props.contactArr.filter(items => 
+                items.logged === true))[0].FullName)
+        return count.length
     }
 
     render(){
-
+        console.log(this.props.contactArr)
         let showAddContact = null, viewContact = null, 
             viewContactList =null, showEditContact = null;
 
@@ -90,7 +76,6 @@ class ParentContainer extends React.Component{
         if(this.state.addForm){
             showAddContact = (
                 <AddContact 
-                    submit={this.onSubmitAddForm}
                     close={this.onShowAddform} 
                     show={this.state.addForm}  />
             )
@@ -99,7 +84,6 @@ class ParentContainer extends React.Component{
         if(this.state.editForm){
             showEditContact = (
                 <EditContact 
-                    submitEdit={this.onSubmitEditForm}
                     close={this.onCloseEditForm} 
                     item = {this.state.editItem}
                     show={this.state.editForm}  />
@@ -124,6 +108,7 @@ class ParentContainer extends React.Component{
                                 msgIconDisabled = {findLogged(this.props.contactArr)}
                                 svg = {true}
                                 key={items.id}
+                                count={this.messageCount(items)}
                                 bgColor={this.props.bgColor[index]}
                                 fullname = {items.FullName}
                                 email = {items.Email}
@@ -174,8 +159,6 @@ let mapPropsToState = state => {
 
 let mapDispatchToProps = dispatch => {
     return{
-        onSubmitAddContact : (items) => (dispatch(actionTypes.onSubmitAddForm(items))),
-        onSubmitEditContact : (data) => (dispatch(actionTypes.onSubmitEditForm(data))),
         onViewspecific : (items) => (dispatch(actionTypes.onviewContact(items))),
         onClickMessageIcon : (items) => (dispatch(actionTypes.onClickMessIcon(items))),
         onRandomColors : (items) => (dispatch(actionTypes.onGenerateColor(items)))
